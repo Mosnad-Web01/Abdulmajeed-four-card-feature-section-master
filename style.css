@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+/* Root Variables */
+:root {
+    --clr-accent-cyan: hsl(180, 62%, 50%);
+    --clr-accent-red: hsl(0, 78%, 57%);
+    --clr-accent-orange: hsl(34, 97%, 59%);
+    --clr-accent-blue: hsl(212, 86%, 59%);
+
+    --clr-neutral-100: hsl(0, 0%, 96%);
+    --clr-neutral-300: hsl(229, 8%, 60%);
+    --clr-neutral-700: hsl(234, 15%, 30%);
+
+    --fw-extralight: 200;
+    --fw-regular: 400;
+    --fw-semibold: 600;
+}
+
+/* Global Resets */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    line-height: calc(1em + 0.6rem);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--clr-neutral-100);
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 0.85rem;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* Header Styling */
+header {
+    display: grid;
+    gap: 1.2rem;
+    max-width: min(85%, 33.75rem);
+    margin-block: 5.5rem 4.5rem;
+    text-align: center;
+}
+
+.header__title {
+    color: var(--clr-neutral-700);
+    font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+    font-weight: var(--fw-extralight);
+}
+
+.header__title span {
+    font-weight: var(--fw-semibold);
+}
+
+header p {
+    color: var(--clr-neutral-300);
+    font-size: 1rem;
+}
+
+/* Main Layout */
+.main {
+    display: grid;
+    gap: 1.7rem;
+    margin-block-end: 5.5rem;
+    max-width: min(83%, 72rem);
+}
+
+@media (min-width: 960px) {
+    .main {
+        grid-template-areas:
+            ". red ."
+            "cyan red blue"
+            "cyan orange blue"
+            ". orange .";
+        gap: 2.2rem;
+    }
+
+    .main :nth-child(1) {
+        grid-area: cyan;
+    }
+
+    .main :nth-child(2) {
+        grid-area: red;
+    }
+
+    .main :nth-child(3) {
+        grid-area: orange;
+    }
+
+    .main :nth-child(4) {
+        grid-area: blue;
+    }
+}
+
+/* Card Styling */
+.card {
+    background: #ffffff;
+    border-radius: 0.6rem;
+    box-shadow: 0 17px 34px -12px hsla(213, 50%, 65%, 0.55);
+    max-width: 31rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 22px 44px -16px hsla(213, 50%, 65%, 0.75);
+}
+
+.card::before {
+    content: '';
+    display: block;
+    height: 0.3rem;
+    background-color: var(--clr-accent-cyan);
+}
+
+.card[data-accent="cyan"]::before {
+    background-color: var(--clr-accent-cyan);
+}
+
+.card[data-accent="red"]::before {
+    background-color: var(--clr-accent-red);
+}
+
+.card[data-accent="orange"]::before {
+    background-color: var(--clr-accent-orange);
+}
+
+.card[data-accent="blue"]::before {
+    background-color: var(--clr-accent-blue);
+}
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: var(--clr-neutral-300);
+    padding: 1.75rem 2rem 2rem;
+}
+
+.card__title {
+    color: var(--clr-neutral-700);
+    font-size: 1.3rem;
+    font-weight: var(--fw-semibold);
+}
+
+.card__icon {
+    margin-block-start: 2.2rem;
+    margin-inline-start: auto;
+    width: 20%;
+}
